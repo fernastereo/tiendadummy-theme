@@ -29,6 +29,8 @@ jobs:
         run: |
           cd src
           npx gulp build
+          cd ..
+          git add assets/
 
       - name: 📤 Commit compiled assets and other changes
         env:
