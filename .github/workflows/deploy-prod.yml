@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
+        with:
+          path: .
 
       - name: 🟢 Set up Node.js
         uses: actions/setup-node@v3
