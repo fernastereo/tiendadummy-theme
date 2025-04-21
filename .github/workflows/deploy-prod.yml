@@ -34,7 +34,7 @@ jobs:
       - name: 🛠 Compile assets with Gulp
         run: |
           cd src
-          npx gulp
+          npx gulp build
 
       - name: 🚀 Deploy to Shopify
         run: |

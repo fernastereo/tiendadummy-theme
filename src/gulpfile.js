@@ -40,4 +40,6 @@ function watchFiles() {
   watch(paths.scripts.src, scripts);
 }
 
+exports.build = series(styles, scripts);
+
 exports.default = series(styles, scripts, watchFiles);
