@@ -1,0 +1,34 @@
+name: Build and Deploy to Shopify
+
+on:
+  push:
+    branches:
+      - main  # Cambia si usas otra rama principal
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🟢 Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 📦 Install dependencies
+        run: |
+          cd src
+          npm install
+
+      - name: 🛠 Compile assets with Gulp
+        run: |
+          cd src
+          npx gulp
+
+      - name: 🚀 Deploy to Shopify
+        run: |
+          npm install -g @shopify/cli @shopify/theme
+          shopify theme push --store ${{ secrets.SHOPIFY_STORE }} --password ${{ secrets.SHOPIFY_PASSWORD }} --theme-id ${{ secrets.SHOPIFY_THEME_ID }} --path=.
