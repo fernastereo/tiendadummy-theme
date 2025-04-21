@@ -23,7 +23,6 @@ package-lock.json
 dist/
 config.yml
 config.yml.*
-package.json
 shopify.theme.toml
 #logs and temp files
 *.log

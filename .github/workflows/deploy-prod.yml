@@ -20,6 +20,12 @@ jobs:
         with:
           node-version: '18'
 
+      - name: 🧪 Show directory tree
+        run: |
+          pwd
+          ls -la
+          ls -la src
+        
       - name: 📦 Install dependencies
         run: |
           cd src
