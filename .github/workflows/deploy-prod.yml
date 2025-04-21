@@ -31,9 +31,12 @@ jobs:
           npx gulp build
 
       - name: 📤 Commit compiled assets and other changes
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
           git add -A
           git commit -m "🔧 Auto-compile assets and push theme updates" || echo "No changes to commit"
           git push origin main
