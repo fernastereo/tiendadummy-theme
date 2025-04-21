@@ -8,3 +8,33 @@
 ehthumbs.db
 Thumbs.db
 .shopify
+
+# VSCode settings
+.vscode
+.vscode/*
+
+#Node dependencies and build output (if applicable)
+node_modules
+npm-debug.log*
+package-lock.json
+
+#shopify Theme Kit Temporary Files
+.DS_Store
+dist/
+config.yml
+config.yml.*
+package.json
+shopify.theme.toml
+#logs and temp files
+*.log
+*.tmp
+*.swp
+.sass-cache/
+.cache/
+.idea/
+
+#github workflow outputs (if using Github Actions locally)
+.github/workflows/*-reports/
+
+assets/*.min.css
+assets/*.min.js
