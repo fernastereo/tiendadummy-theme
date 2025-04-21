@@ -19,12 +19,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-
-      - name: 🧪 Show directory tree
-        run: |
-          pwd
-          ls -la
-          ls -la src
         
       - name: 📦 Install dependencies
         run: |
@@ -36,7 +30,10 @@ jobs:
           cd src
           npx gulp build
 
-      - name: 🚀 Deploy to Shopify
+      - name: 📤 Commit compiled assets and other changes
         run: |
-          npm install -g @shopify/cli @shopify/theme
-          shopify theme push --store ${{ secrets.SHOPIFY_STORE }} --password ${{ secrets.SHOPIFY_PASSWORD }} --theme-id ${{ secrets.SHOPIFY_THEME_ID }} --path=.
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add -A
+          git commit -m "🔧 Auto-compile assets and push theme updates" || echo "No changes to commit"
+          git push origin main
