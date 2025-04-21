@@ -41,6 +41,6 @@ jobs:
           echo "Remote URL before: $(git remote get-url origin)"
           git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
           echo "Remote URL after: $(git remote get-url origin)"
-          git add -A
+          git add -f assets/*.min.css assets/*.min.js
           git commit -m "🔧 Auto-compile assets and push theme updates" || echo "No changes to commit"
           git push origin main
