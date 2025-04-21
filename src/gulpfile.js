@@ -18,20 +18,16 @@ const paths = {
 
 function styles() {
   return src(paths.styles.src)
-    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(cleanCSS())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(sourcemaps.write('.'))
     .pipe(dest(paths.styles.dest));
 }
 
 function scripts() {
   return src(paths.scripts.src)
-    .pipe(sourcemaps.init())
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(sourcemaps.write('.'))
     .pipe(dest(paths.scripts.dest));
 }
 
